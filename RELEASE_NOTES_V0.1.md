@@ -8,6 +8,8 @@ English display name: Pokémon Edición Team Rocket (DragonsDen) ROM Modifier
 
 V0.1 是第一版公开发布版本，面向新手用户制作。
 
+封装包已更新启动器兼容性：双击启动时会显示启动过程，中文入口不可用时可使用 `start.bat`。
+
 本版包含：
 
 - 本地网页修改器
@@ -28,6 +30,8 @@ V0.1 是第一版公开发布版本，面向新手用户制作。
 ## English
 
 V0.1 is the first public release. It is designed for beginner users.
+
+The packaged launcher has been updated for better compatibility. It now shows startup status, and `start.bat` is available as a fallback launcher.
 
 Included in this version:
 

@@ -23,7 +23,7 @@
 
 ## 使用方法
 
-1. 双击 `点我打开修改器.bat`。
+1. 双击 `点我打开修改器.bat`。如果系统对中文文件名兼容不好，也可以双击 `start.bat`。
 2. 浏览器打开后点击 `打开 ROM`，选择 `.gba` 文件。
 3. 在 `宝可梦` 或 `招式` 页面修改需要的内容。
 4. 在 `保存` 页面点击 `保存副本`。
@@ -39,6 +39,8 @@
 ```text
 口袋妖怪西班牙火箭队ROM修改器
 ├─ 点我打开修改器.bat
+├─ start.bat
+├─ start_modifier.ps1
 ├─ README.txt
 ├─ README.md
 └─ app
@@ -81,7 +83,7 @@ This repository does not include any ROM file, game asset file, or save file.
 
 ## Usage
 
-1. Double-click `点我打开修改器.bat`.
+1. Double-click `点我打开修改器.bat`. If your system has trouble with Chinese filenames, double-click `start.bat` instead.
 2. After the browser opens, click `打开 ROM` and choose a `.gba` file.
 3. Edit the desired entries in the `宝可梦` or `招式` page.
 4. Open the `保存` page and click `保存副本`.
