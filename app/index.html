@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>口袋妖怪西班牙火箭队ROM修改器</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <h1>口袋妖怪西班牙火箭队ROM修改器</h1>
+          <p class="signature">——百度贴吧 祖鲁桃源</p>
+          <p id="romStatus">请先打开 .gba 文件</p>
+        </div>
+        <div class="top-actions">
+          <label class="button primary" for="romFile" title="打开本地 GBA 文件">打开 ROM</label>
+          <input id="romFile" class="visually-hidden" type="file" accept=".gba,application/octet-stream">
+          <button id="saveTopButton" class="button" type="button" disabled title="下载修改后的副本">保存副本</button>
+        </div>
+      </header>
+
+      <section class="status-strip" aria-live="polite">
+        <span id="catalogStatus">数据目录加载中</span>
+        <span id="changeCounter">尚未载入 ROM</span>
+      </section>
+
+      <main class="workspace">
+        <nav class="tabs" aria-label="编辑类别">
+          <button class="tab active" type="button" data-view-button="pokemon">宝可梦</button>
+          <button class="tab" type="button" data-view-button="moves">招式</button>
+          <button class="tab" type="button" data-view-button="save">保存</button>
+        </nav>
+
+        <section id="pokemonView" class="view active" data-view="pokemon">
+          <aside class="picker-panel">
+            <label class="search-label" for="pokemonSearch">搜索宝可梦</label>
+            <input id="pokemonSearch" class="search-input" type="search" placeholder="名称或编号" autocomplete="off">
+            <div id="pokemonList" class="result-list" role="listbox" aria-label="宝可梦列表"></div>
+          </aside>
+
+          <section class="editor-panel" aria-labelledby="pokemonTitle">
+            <div class="editor-heading">
+              <div>
+                <h2 id="pokemonTitle">选择宝可梦</h2>
+                <p id="pokemonSubtitle">打开 ROM 后可编辑当前条目</p>
+              </div>
+              <button id="restorePokemonButton" class="button quiet" type="button" disabled title="恢复当前宝可梦的原始数据">还原当前</button>
+            </div>
+
+            <fieldset class="field-group">
+              <legend>种族值</legend>
+              <div class="number-grid">
+                <label>HP<input id="pkmHp" type="number" min="0" max="255" inputmode="numeric"></label>
+                <label>攻击<input id="pkmAtk" type="number" min="0" max="255" inputmode="numeric"></label>
+                <label>防御<input id="pkmDef" type="number" min="0" max="255" inputmode="numeric"></label>
+                <label>速度<input id="pkmSpeed" type="number" min="0" max="255" inputmode="numeric"></label>
+                <label>特攻<input id="pkmSpAtk" type="number" min="0" max="255" inputmode="numeric"></label>
+                <label>特防<input id="pkmSpDef" type="number" min="0" max="255" inputmode="numeric"></label>
+              </div>
+              <p id="pokemonStatTotal" class="metric">总和 0</p>
+            </fieldset>
+
+            <fieldset class="field-group">
+              <legend>属性</legend>
+              <div class="select-grid">
+                <label>属性 1<select id="pkmType1"></select></label>
+                <label>属性 2<select id="pkmType2"></select></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field-group">
+              <legend>特性</legend>
+              <div class="select-grid three">
+                <label>普通特性 1<select id="pkmAbility1"></select></label>
+                <label>普通特性 2<select id="pkmAbility2"></select></label>
+                <label>隐藏特性<select id="pkmHiddenAbility"></select></label>
+              </div>
+            </fieldset>
+          </section>
+        </section>
+
+        <section id="movesView" class="view" data-view="moves">
+          <aside class="picker-panel">
+            <label class="search-label" for="moveSearch">搜索招式</label>
+            <input id="moveSearch" class="search-input" type="search" placeholder="名称或编号" autocomplete="off">
+            <div id="moveList" class="result-list" role="listbox" aria-label="招式列表"></div>
+          </aside>
+
+          <section class="editor-panel" aria-labelledby="moveTitle">
+            <div class="editor-heading">
+              <div>
+                <h2 id="moveTitle">选择招式</h2>
+                <p id="moveSubtitle">打开 ROM 后可编辑当前条目</p>
+              </div>
+              <button id="restoreMoveButton" class="button quiet" type="button" disabled title="恢复当前招式的原始数据">还原当前</button>
+            </div>
+
+            <fieldset class="field-group">
+              <legend>基础数值</legend>
+              <div class="number-grid">
+                <label>威力<input id="movePower" type="number" min="0" max="999" inputmode="numeric"></label>
+                <label>命中率<input id="moveAccuracy" type="number" min="0" max="100" inputmode="numeric"></label>
+                <label>PP<input id="movePp" type="number" min="0" max="255" inputmode="numeric"></label>
+                <label>二级效果概率<input id="moveSecondary" type="number" min="0" max="100" inputmode="numeric"></label>
+                <label>优先级<input id="movePriority" type="number" min="-7" max="7" inputmode="numeric"></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field-group">
+              <legend>类型设定</legend>
+              <div class="select-grid three">
+                <label>属性<select id="moveType"></select></label>
+                <label>分类<select id="moveCategory"></select></label>
+                <label>目标范围<select id="moveTarget"></select></label>
+              </div>
+            </fieldset>
+          </section>
+        </section>
+
+        <section id="saveView" class="view save-view" data-view="save">
+          <section class="save-panel">
+            <div class="editor-heading">
+              <div>
+                <h2>保存副本</h2>
+                <p id="saveSubtitle">修改后的 ROM 会作为新文件下载，原文件不会被覆盖</p>
+              </div>
+              <button id="saveMainButton" class="button primary" type="button" disabled>保存副本</button>
+            </div>
+            <div id="changeSummary" class="summary-list">打开 ROM 后会显示修改清单</div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

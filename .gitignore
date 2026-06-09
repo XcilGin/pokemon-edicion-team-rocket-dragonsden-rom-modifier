@@ -1,0 +1,8 @@
+*.gba
+*.sav
+*.srm
+*.sgm
+*.zip
+*.7z
+*.rar
+__pycache__/
