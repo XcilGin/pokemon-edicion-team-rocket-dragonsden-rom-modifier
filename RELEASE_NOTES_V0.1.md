@@ -2,6 +2,8 @@
 
 ——百度贴吧 祖鲁桃源
 
+English display name: Pokémon Edición Team Rocket (DragonsDen) ROM Modifier
+
 ## 中文
 
 V0.1 是第一版公开发布版本，面向新手用户制作。

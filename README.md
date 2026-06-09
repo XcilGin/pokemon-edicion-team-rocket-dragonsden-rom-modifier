@@ -57,7 +57,7 @@
 
 ---
 
-# Pokemon Spanish Rocket Team ROM Modifier
+# Pokémon Edición Team Rocket (DragonsDen) ROM Modifier
 
 By Baidu Tieba user Zulu Taoyuan
 
